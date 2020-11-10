@@ -1,35 +1,19 @@
 import zhCnNames from './names'
-import addressJson from './provinceList'
+import provinces from './provinces'
+import cities from './cities'
+import areas from './areas'
+import streets from './streets'
 
 const log = (...infos) => {
     if (process.env.NODE_ENV !== 'production') {
         console.log(...infos)
     }
 }
-const provinces = addressJson.reduce((per, cur) => {
-    const {children, ...others} = cur
-    return per.concat(others)
-}, [])
-
-const cities = addressJson.reduce((per, cur) => {
-    return per.concat(cur.children ? cur.children.map(({children, ...others}) => ({...others, provinceCode: cur.code})) : [])
-}, [])
-
-const areas = addressJson.reduce((per, cur) => {
-    const provinceCode = cur.code
-    return per.concat(cur.children ? cur.children.reduce((p, c) => {
-        const cityCode = c.code
-        return p.concat(c.children ? c.children.map(({children, ...others}) => ({...others, cityCode, provinceCode,})) : [])
-    }, []) : [])
-}, [])
 
 const provinceString = JSON.stringify(provinces)
 const cityString = JSON.stringify(cities)
 const areaString = JSON.stringify(areas)
-
-log(provinces)
-log(cities)
-log(areas)
+const streetString = JSON.stringify(streets);
 
 log(provinces.length + cities.length + areas.length)
 
@@ -41,7 +25,7 @@ log(provinces.length + cities.length + areas.length)
  * @constructor
  */
 const AddressParse = (address, options) => {
-    const { type = 0, textFilter = [], nameMaxLength = 4 } = typeof options === 'object' ? options : (typeof options === 'number' ? { type: options } : {})
+    const {type = 0, textFilter = [], nameMaxLength = 4} = typeof options === 'object' ? options : (typeof options === 'number' ? {type: options} : {})
 
     if (!address) {
         return {}
@@ -52,6 +36,7 @@ const AddressParse = (address, options) => {
         province: [],
         city: [],
         area: [],
+        street: [],
         detail: [],
         name: '',
     }
@@ -78,15 +63,16 @@ const AddressParse = (address, options) => {
     // 找省市区和详细地址
     splitAddress.forEach((item, index) => {
         // 识别地址
-        if (!parseResult.province[0] || !parseResult.city[0] || !parseResult.area[0]) {
+        if (!parseResult.province[0] || !parseResult.city[0] || !parseResult.area[0] || !parseResult.street[0]) {
             // 两个方法都可以解析，正则和树查找
             let parse = {}
             type === 1 && (parse = parseRegion(item, parseResult))
             type === 0 && (parse = parseRegionWithRegexp(item, parseResult))
-            const {province, city, area, detail} = parse
+            const {province, city, area, street, detail} = parse
             parseResult.province = province || []
             parseResult.area = area || []
             parseResult.city = city || []
+            parseResult.street = street || []
             parseResult.detail = parseResult.detail.concat(detail || [])
         } else {
             parseResult.detail.push(item)
@@ -102,6 +88,7 @@ const AddressParse = (address, options) => {
     const province = parseResult.province[0]
     const city = parseResult.city[0]
     const area = parseResult.area[0]
+    const street = parseResult.street[0]
     const detail = parseResult.detail
 
     // 地址都解析完了，姓名应该是在详细地址里面
@@ -128,9 +115,14 @@ const AddressParse = (address, options) => {
     log(JSON.stringify(parseResult))
 
     return Object.assign(parseResult, {
+        provinceCode: (province && province.code) || '',
         province: (province && province.name) || '',
+        cityCode:(city && city.code) || '',
         city: (city && city.name) || '',
+        areaCode: (area && area.name) || '',
         area: (area && area.name) || '',
+        streetCode:(street && street.code) || '',
+        street: (street && street.name) || '',
         detail: (detail && detail.length > 0 && detail.join('')) || ''
     })
 }
@@ -143,7 +135,10 @@ const AddressParse = (address, options) => {
  */
 const parseRegionWithRegexp = (fragment, hasParseResult) => {
     log('----- 当前使用正则匹配模式 -----')
-    let province = hasParseResult.province || [], city = hasParseResult.city || [], area = hasParseResult.area || [],
+    let province = hasParseResult.province || [],
+        city = hasParseResult.city || [],
+        area = hasParseResult.area || [],
+        street = hasParseResult.street || [],
         detail = []
 
     let matchStr = ''
@@ -230,6 +225,43 @@ const parseRegionWithRegexp = (fragment, hasParseResult) => {
         }
     }
 
+    if (street.length === 0) {
+        for (let i = 1; i < fragment.length; i++) {
+            const str = fragment.substring(0, i + 1)
+            const regexStreet = new RegExp(`\{\"code\":\"[0-9]{1,9}\",\"name\":\"${str}[\u4E00-\u9FA5]*?\",\"areaCode\":\"${area[0] ? area[0].code : '[0-9]{1,6}'}\",\"cityCode\":\"${city[0] ? city[0].code : '[0-9]{1,6}'}\",\"provinceCode\":\"${province[0] ? `${province[0].code}` : '[0-9]{1,6}'}\"\}`, 'g')
+            const matchStreet = streetString.match(regexStreet)
+            if (matchStreet) {
+                const streetObj = JSON.parse(matchStreet[0])
+                if (matchStreet.length === 1) {
+                    street = []
+                    matchStr = str
+                    street.push(streetObj)
+                }
+            } else {
+                break
+            }
+        }
+        if (street[0]) {
+            const {provinceCode, cityCode, areaCode} = street[0]
+            fragment = fragment.replace(matchStr, '')
+            if (province.length === 0) {
+                const regexProvince = new RegExp(`\{\"code\":\"${provinceCode}\",\"name\":\"[\u4E00-\u9FA5]+?\"}`, 'g')
+                const matchProvince = provinceString.match(regexProvince)
+                province.push(JSON.parse(matchProvince[0]))
+            }
+            if (city.length === 0) {
+                const regexCity = new RegExp(`\{\"code\":\"${cityCode}\",\"name\":\"[\u4E00-\u9FA5]+?\",\"provinceCode\":\"${provinceCode}\"\}`, 'g')
+                const matchCity = cityString.match(regexCity)
+                city.push(JSON.parse(matchCity[0]))
+            }
+            if (area.length === 0) {
+                const regexArea = new RegExp(`\{\"code\":\"${areaCode}\",\"name\":\"[\u4E00-\u9FA5]+?\",\"cityCode\":\"${cityCode}\"\},\"provinceCode\":\"${provinceCode}\"\}`, 'g')
+                const matchArea = cityString.match(regexArea)
+                area.push(JSON.parse(regexArea[0]))
+            }
+        }
+    }
+
 
     // 解析完省市区如果还存在地址，则默认为详细地址
     if (fragment.length > 0) {
@@ -240,6 +272,7 @@ const parseRegionWithRegexp = (fragment, hasParseResult) => {
         province,
         city,
         area,
+        street,
         detail,
     }
 }
@@ -252,7 +285,7 @@ const parseRegionWithRegexp = (fragment, hasParseResult) => {
  */
 const parseRegion = (fragment, hasParseResult) => {
     log('----- 当前使用树查找模式 -----')
-    let province = [], city = [], area = [], detail = []
+    let province = [], city = [], area = [], street = [], detail = []
 
     if (hasParseResult.province[0]) {
         province = hasParseResult.province
@@ -356,6 +389,55 @@ const parseRegion = (fragment, hasParseResult) => {
                 }
             }
             if (area.length > 0) {
+                break
+            }
+        }
+    }
+
+    // 从街道开始查找
+    for (const tempStreet of streets) {
+        console.log('tempStreet',tempStreet)
+        const {name, provinceCode, cityCode, areaCode} = tempStreet
+        const currentProvince = province[0]
+        const currentCity = city[0]
+        const currentArea = area[0]
+
+        // 有省或者市或地区
+        if (currentProvince || currentCity || currentArea) {
+            if ((currentProvince && currentProvince.code === provinceCode)
+                || (currentCity && currentCity.code) === cityCode
+                || (currentArea && currentArea.code) === areaCode) {
+                let replaceName = ''
+                for (let i = name.length; i > 1; i--) {
+                    const temp = name.substring(0, i)
+                    if (fragment.indexOf(temp) === 0) {
+                        replaceName = temp
+                        break
+                    }
+                }
+                if (replaceName) {
+                    street.push(tempStreet)
+                    !currentArea && area.push(areas.find(item => item.code === areaCode))
+                    !currentCity && city.push(cities.find(item => item.code === cityCode))
+                    !currentProvince && province.push(provinces.find(item => item.code === provinceCode))
+                    fragment = fragment.replace(replaceName, '')
+                    break
+                }
+            }
+        } else {
+            // 没有省市，区县市有可能重名，这里暂时不处理，因为概率极低，可以根据添加市解决
+            for (let i = name.length; i > 1; i--) {
+                const replaceName = name.substring(0, i)
+                if (fragment.indexOf(replaceName) === 0) {
+                    street.push(tempStreet)
+                    area.push(streets.find(item => item.code === areaCode))
+                    city.push(cities.find(item => item.code === cityCode))
+                    province.push(provinces.find(item => item.code === provinceCode))
+                    fragment = fragment.replace(replaceName, '')
+                    break
+                }
+            }
+            if (street.length > 0) {
                 break
             }
         }
