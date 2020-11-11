@@ -255,9 +255,11 @@ const parseRegionWithRegexp = (fragment, hasParseResult) => {
                 city.push(JSON.parse(matchCity[0]))
             }
             if (area.length === 0) {
-                const regexArea = new RegExp(`\{\"code\":\"${areaCode}\",\"name\":\"[\u4E00-\u9FA5]+?\",\"cityCode\":\"${cityCode}\"\},\"provinceCode\":\"${provinceCode}\"\}`, 'g')
-                const matchArea = cityString.match(regexArea)
-                area.push(JSON.parse(regexArea[0]))
+                const regexArea = new RegExp(`\{\"code\":\"${areaCode}\",\"name\":\"[\u4E00-\u9FA5]+?\",\"cityCode\":\"${cityCode}\",\"provinceCode\":\"${provinceCode}\"\}`, 'g')
+                const matchArea = areaString.match(regexArea)
+                if(matchArea) {
+                    area.push(JSON.parse(matchArea[0]))
+                }
             }
         }
     }
