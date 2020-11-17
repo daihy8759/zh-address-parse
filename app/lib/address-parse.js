@@ -119,7 +119,7 @@ const AddressParse = (address, options) => {
         province: (province && province.name) || '',
         cityCode:(city && city.code) || '',
         city: (city && city.name) || '',
-        areaCode: (area && area.name) || '',
+        areaCode: (area && area.code) || '',
         area: (area && area.name) || '',
         streetCode:(street && street.code) || '',
         street: (street && street.name) || '',
