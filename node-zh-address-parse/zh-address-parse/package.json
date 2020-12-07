@@ -1,0 +1,7 @@
+{
+  "name": "zh-address-parse",
+  "dependencies": {
+    "fastify": "^3.9.1",
+    "winston": "^3.3.3"
+  }
+}
