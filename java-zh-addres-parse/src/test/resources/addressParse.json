@@ -1,0 +1,546 @@
+[
+  {
+    "address": "太阳鲜鲜 盐田区山海四季城F栋17A，13111111111",
+    "result": {
+      "phone": "13111111111",
+      "province": "广东省",
+      "city": "深圳市",
+      "area": "盐田区",
+      "street": "",
+      "detail": "山海四季城F栋17A",
+      "name": "太阳鲜鲜",
+      "postalCode": "",
+      "provinceCode": "44",
+      "cityCode": "4403",
+      "areaCode": "440308",
+      "streetCode": ""
+    }
+  },
+  {
+    "address": " 盐田区山海四季城F栋2f，13111111111 太阳鲜鲜",
+    "result": {
+      "phone": "13111111111",
+      "province": "广东省",
+      "city": "深圳市",
+      "area": "盐田区",
+      "street": "",
+      "detail": "山海四季城F栋2f",
+      "name": "太阳鲜鲜",
+      "postalCode": "",
+      "provinceCode": "44",
+      "cityCode": "4403",
+      "areaCode": "440308",
+      "streetCode": ""
+    }
+  },
+  {
+    "address": "谢先生，深圳市龙岗区南湾街道尚峰花园4C2231 13111111111",
+    "result": {
+      "phone": "13111111111",
+      "province": "广东省",
+      "city": "深圳市",
+      "area": "龙岗区",
+      "street": "南湾街道",
+      "detail": "尚峰花园4C2231",
+      "name": "谢先生",
+      "postalCode": "",
+      "provinceCode": "44",
+      "cityCode": "4403",
+      "areaCode": "440307",
+      "streetCode": "440307012"
+    }
+  },
+  {
+    "address": "盐田区山海四季城D栋17A\n            周敏 13111111111",
+    "result": {
+      "phone": "13111111111",
+      "province": "广东省",
+      "city": "深圳市",
+      "area": "盐田区",
+      "street": "",
+      "detail": "山海四季城D栋17A",
+      "name": "周敏",
+      "postalCode": "",
+      "provinceCode": "44",
+      "cityCode": "4403",
+      "areaCode": "440308",
+      "streetCode": ""
+    }
+  },
+  {
+    "address": "广东省深圳市盐田区东海三街山海四季城F4E，李侯明，13111111111",
+    "result": {
+      "phone": "13111111111",
+      "province": "广东省",
+      "city": "深圳市",
+      "area": "盐田区",
+      "street": "",
+      "detail": "东海三街山海四季城F4E",
+      "name": "李侯明",
+      "postalCode": "",
+      "provinceCode": "44",
+      "cityCode": "4403",
+      "areaCode": "440308",
+      "streetCode": ""
+    }
+  },
+  {
+    "address": "深圳市盐田区，大梅沙万科东海岸221栋，周女士13111111111",
+    "result": {
+      "phone": "13111111111",
+      "province": "广东省",
+      "city": "深圳市",
+      "area": "盐田区",
+      "street": "",
+      "detail": "大梅沙万科东海岸221栋",
+      "name": "周女士",
+      "postalCode": "",
+      "provinceCode": "44",
+      "cityCode": "4403",
+      "areaCode": "440308",
+      "streetCode": ""
+    }
+  },
+  {
+    "address": "收货人: 杨燕艳\n            手机号码: 13111111111\n            所在地区: 广东省深圳市龙岗区龙岗街道\n            详细地址: 格水村三巷十号三楼",
+    "result": {
+      "phone": "13111111111",
+      "province": "广东省",
+      "city": "深圳市",
+      "area": "龙岗区",
+      "street": "龙岗街道",
+      "detail": "格水村三巷十号三楼",
+      "name": "杨燕艳",
+      "postalCode": "",
+      "provinceCode": "44",
+      "cityCode": "4403",
+      "areaCode": "440307",
+      "streetCode": "440307016"
+    }
+  },
+  {
+    "address": "地址:深圳市盐田区山海四季城A栋32D\n            张欢 13111111111",
+    "result": {
+      "phone": "13111111111",
+      "province": "广东省",
+      "city": "深圳市",
+      "area": "盐田区",
+      "street": "",
+      "detail": "山海四季城A栋32D",
+      "name": "张欢",
+      "postalCode": "",
+      "provinceCode": "44",
+      "cityCode": "4403",
+      "areaCode": "440308",
+      "streetCode": ""
+    }
+  },
+  {
+    "address": "地址：深圳市龙华新区樟坑一区通博花园181栋\n            收件人：于生生\n            电话：13111111111",
+    "result": {
+      "phone": "13111111111",
+      "province": "广东省",
+      "city": "深圳市",
+      "area": "龙华区",
+      "street": "",
+      "detail": "新区樟坑一区通博花园181栋",
+      "name": "于生生",
+      "postalCode": "",
+      "provinceCode": "44",
+      "cityCode": "4403",
+      "areaCode": "440309",
+      "streetCode": ""
+    }
+  },
+  {
+    "address": "所在地区: 湖南省株洲市醴陵市白兔潭镇\n            详细地址: 金牛居委会金牛路5号国超\n            刘娇 131 1111 1111",
+    "result": {
+      "phone": "13111111111",
+      "province": "湖南省",
+      "city": "株洲市",
+      "area": "醴陵市",
+      "street": "白兔潭镇",
+      "detail": "金牛居委会金牛路5号国超",
+      "name": "刘娇",
+      "postalCode": "",
+      "provinceCode": "43",
+      "cityCode": "4302",
+      "areaCode": "430281",
+      "streetCode": "430281102"
+    }
+  },
+  {
+    "address": "江西南昌市青山湖区广兰大道418号东华理工大学核工系南区9栋1112室 131 1111 1111 孙轶念",
+    "result": {
+      "phone": "13111111111",
+      "province": "江西省",
+      "city": "南昌市",
+      "area": "青山湖区",
+      "street": "",
+      "detail": "广兰大道418号东华理工大学核工系南区9栋1112室",
+      "name": "孙轶念",
+      "postalCode": "",
+      "provinceCode": "36",
+      "cityCode": "3601",
+      "areaCode": "360111",
+      "streetCode": ""
+    }
+  },
+  {
+    "address": "湖北黄石市牧羊湖水机路华瑞南岸星城一栋一单元2202。\n\n            刘月红13111111111",
+    "result": {
+      "phone": "13111111111",
+      "province": "湖北省",
+      "city": "黄石市",
+      "area": "西塞山区",
+      "street": "牧羊湖街道",
+      "detail": "水机路华瑞南岸星城一栋一单元2202",
+      "name": "刘月红",
+      "postalCode": "",
+      "provinceCode": "42",
+      "cityCode": "4202",
+      "areaCode": "420203",
+      "streetCode": "420203010"
+    }
+  },
+  {
+    "address": "盐田区北山道山海四季城F20D 韩先生 13111111111",
+    "result": {
+      "phone": "13111111111",
+      "province": "广东省",
+      "city": "深圳市",
+      "area": "盐田区",
+      "street": "",
+      "detail": "北山道山海四季城F20D",
+      "name": "韩先生",
+      "postalCode": "",
+      "provinceCode": "44",
+      "cityCode": "4403",
+      "areaCode": "440308",
+      "streetCode": ""
+    }
+  },
+  {
+    "address": "深圳市盐田区盐田街道东海三街8号山海四季花园  曾候丽  13111111111",
+    "result": {
+      "phone": "13111111111",
+      "province": "广东省",
+      "city": "深圳市",
+      "area": "盐田区",
+      "street": "盐田街道",
+      "detail": "东海三街8号山海四季花园",
+      "name": "曾候丽",
+      "postalCode": "",
+      "provinceCode": "44",
+      "cityCode": "4403",
+      "areaCode": "440308",
+      "streetCode": "440308002"
+    }
+  },
+  {
+    "address": "深圳市罗湖区凤凰路中山花园1栋582室，刘蓝琴，电話13111111111",
+    "result": {
+      "phone": "13111111111",
+      "province": "广东省",
+      "city": "深圳市",
+      "area": "罗湖区",
+      "street": "",
+      "detail": "凤凰路中山花园1栋582室电話",
+      "name": "刘蓝琴",
+      "postalCode": "",
+      "provinceCode": "44",
+      "cityCode": "4403",
+      "areaCode": "440303",
+      "streetCode": ""
+    }
+  },
+  {
+    "address": "袁月青13111111111四川省成都市高新西区百叶路1号电子科技大学成都学院计算机(分院)",
+    "result": {
+      "phone": "13111111111",
+      "province": "四川省",
+      "city": "成都市",
+      "area": "",
+      "street": "",
+      "detail": "高新西区百叶路1号电子科技大学成都学院计算机分院",
+      "name": "袁月青",
+      "postalCode": "",
+      "provinceCode": "51",
+      "cityCode": "5101",
+      "areaCode": "",
+      "streetCode": ""
+    }
+  },
+  {
+    "address": "盐田区山海四季城F栋1B，卢燕13111111111",
+    "result": {
+      "phone": "13111111111",
+      "province": "广东省",
+      "city": "深圳市",
+      "area": "盐田区",
+      "street": "",
+      "detail": "山海四季城F栋1B",
+      "name": "卢燕",
+      "postalCode": "",
+      "provinceCode": "44",
+      "cityCode": "4403",
+      "areaCode": "440308",
+      "streetCode": ""
+    }
+  },
+  {
+    "address": "地址：广东省佛山市顺德区乐从天佑城E座2005室；\n            联系人：熊翠花\n            联系电话：13111111111；",
+    "result": {
+      "phone": "13111111111",
+      "province": "广东省",
+      "city": "佛山市",
+      "area": "顺德区",
+      "street": "乐从镇",
+      "detail": "天佑城E座2005室",
+      "name": "熊翠花",
+      "postalCode": "",
+      "provinceCode": "44",
+      "cityCode": "4406",
+      "areaCode": "440606",
+      "streetCode": "440606103"
+    }
+  },
+  {
+    "address": "深圳市南山区南光路龙坤居2栋D座714，收件人：张珍云，电话：13111111111",
+    "result": {
+      "phone": "13111111111",
+      "province": "广东省",
+      "city": "深圳市",
+      "area": "南山区",
+      "street": "",
+      "detail": "南光路龙坤居2栋D座714",
+      "name": "张珍云",
+      "postalCode": "",
+      "provinceCode": "44",
+      "cityCode": "4403",
+      "areaCode": "440305",
+      "streetCode": ""
+    }
+  },
+  {
+    "address": "深圳市盐田区万科东海岸21-102，收件人：叶侠，电话：131 1111 1111",
+    "result": {
+      "phone": "13111111111",
+      "province": "广东省",
+      "city": "深圳市",
+      "area": "盐田区",
+      "street": "",
+      "detail": "万科东海岸21-102",
+      "name": "叶侠",
+      "postalCode": "",
+      "provinceCode": "44",
+      "cityCode": "4403",
+      "areaCode": "440308",
+      "streetCode": ""
+    }
+  },
+  {
+    "address": "地址：深圳市 南山区 南商路碧海天家园A89B 联系电话：13111111111 黄发猜",
+    "result": {
+      "phone": "13111111111",
+      "province": "广东省",
+      "city": "深圳市",
+      "area": "南山区",
+      "street": "",
+      "detail": "南商路碧海天家园A89B",
+      "name": "黄发猜",
+      "postalCode": "",
+      "provinceCode": "44",
+      "cityCode": "4403",
+      "areaCode": "440305",
+      "streetCode": ""
+    }
+  },
+  {
+    "address": "都匀市水岸绿洲小区2栋二单元2033  李玉 13111111111",
+    "result": {
+      "phone": "13111111111",
+      "province": "贵州省",
+      "city": "黔南布依族苗族自治州",
+      "area": "都匀市",
+      "street": "",
+      "detail": "水岸绿洲小区2栋二单元2033",
+      "name": "李玉",
+      "postalCode": "",
+      "provinceCode": "52",
+      "cityCode": "5227",
+      "areaCode": "522701",
+      "streetCode": ""
+    }
+  },
+  {
+    "address": "贵州省都匀市。甘塘镇绿茵湖村一组2号  刘雪莉     13111111111",
+    "result": {
+      "phone": "13111111111",
+      "province": "贵州省",
+      "city": "黔南布依族苗族自治州",
+      "area": "都匀市",
+      "street": "",
+      "detail": "甘塘镇绿茵湖村一组2号",
+      "name": "刘雪莉",
+      "postalCode": "",
+      "provinceCode": "52",
+      "cityCode": "5227",
+      "areaCode": "522701",
+      "streetCode": ""
+    }
+  },
+  {
+    "address": "湛江市廉江市车板镇人才市场，0755-22107333.曹建林 邮编：713200",
+    "result": {
+      "phone": "0755-22107333",
+      "province": "广东省",
+      "city": "湛江市",
+      "area": "廉江市",
+      "street": "车板镇",
+      "detail": "人才市场",
+      "name": "曹建林",
+      "postalCode": "713200",
+      "provinceCode": "44",
+      "cityCode": "4408",
+      "areaCode": "440881",
+      "streetCode": "440881111"
+    }
+  },
+  {
+    "address": "广东省清远市 清城区洲心街道，金茂家园一栋一楼100号商铺   13111111111 聂小姐",
+    "result": {
+      "phone": "13111111111",
+      "province": "广东省",
+      "city": "清远市",
+      "area": "清城区",
+      "street": "洲心街道",
+      "detail": "金茂家园一栋一楼100号商铺",
+      "name": "聂小姐",
+      "postalCode": "",
+      "provinceCode": "44",
+      "cityCode": "4418",
+      "areaCode": "441802",
+      "streetCode": "441802008"
+    }
+  },
+  {
+    "address": "江苏省 苏州市 吴江区 干将东路678号江苏大厦11楼 215000 徐天宇 13911111111",
+    "result": {
+      "phone": "13911111111",
+      "province": "江苏省",
+      "city": "苏州市",
+      "area": "吴江区",
+      "street": "",
+      "detail": "干将东路678号江苏大厦11楼",
+      "name": "徐天宇",
+      "postalCode": "215000",
+      "provinceCode": "32",
+      "cityCode": "3205",
+      "areaCode": "320509",
+      "streetCode": ""
+    }
+  },
+  {
+    "address": "王小梅13911111111湖南省郴州市桂东县桂东县清泉镇",
+    "result": {
+      "phone": "13911111111",
+      "province": "湖南省",
+      "city": "郴州市",
+      "area": "桂东县",
+      "street": "",
+      "detail": "桂东县清泉镇",
+      "name": "王小梅",
+      "postalCode": "",
+      "provinceCode": "43",
+      "cityCode": "4310",
+      "areaCode": "431027",
+      "streetCode": ""
+    }
+  },
+  {
+    "address": "莫席辉13911111111广西壮族自治区柳州市柳北区跃进路42号4栋20楼",
+    "result": {
+      "phone": "13911111111",
+      "province": "广西壮族自治区",
+      "city": "柳州市",
+      "area": "柳北区",
+      "street": "跃进街道",
+      "detail": "路42号4栋20楼",
+      "name": "莫席辉",
+      "postalCode": "",
+      "provinceCode": "45",
+      "cityCode": "4502",
+      "areaCode": "450205",
+      "streetCode": "450205008"
+    }
+  },
+  {
+    "address": "韩仁伟,13911111111,安徽省安庆市太湖县新仓镇，塔山村，前进组",
+    "result": {
+      "phone": "13911111111",
+      "province": "安徽省",
+      "city": "安庆市",
+      "area": "太湖县",
+      "street": "新仓镇",
+      "detail": "塔山村前进组",
+      "name": "韩仁伟",
+      "postalCode": "",
+      "provinceCode": "34",
+      "cityCode": "3408",
+      "areaCode": "340825",
+      "streetCode": "340825102"
+    }
+  },
+  {
+    "address": "北京市北京市东城区建设路紫薇花园 13311111111 何晓旭",
+    "result": {
+      "phone": "13311111111",
+      "province": "北京市",
+      "city": "北京市",
+      "area": "东城区",
+      "street": "",
+      "detail": "建设路紫薇花园",
+      "name": "何晓旭",
+      "postalCode": "",
+      "provinceCode": "11",
+      "cityCode": "1101",
+      "areaCode": "110101",
+      "streetCode": ""
+    }
+  },
+  {
+    "address": "13311111111 上海市黄浦区 建设路 紫薇花园  何晓旭",
+    "result": {
+      "phone": "13311111111",
+      "province": "上海市",
+      "city": "上海市",
+      "area": "黄浦区",
+      "street": "",
+      "detail": "建设路紫薇花园",
+      "name": "何晓旭",
+      "postalCode": "",
+      "provinceCode": "31",
+      "cityCode": "3101",
+      "areaCode": "310101",
+      "streetCode": ""
+    }
+  },
+  {
+    "address": "王晓光 重庆市 垫江县 太平镇，13311111111",
+    "result": {
+      "phone": "13311111111",
+      "province": "重庆市",
+      "city": "县",
+      "area": "垫江县",
+      "street": "太平镇",
+      "detail": "",
+      "name": "王晓光",
+      "postalCode": "",
+      "provinceCode": "50",
+      "cityCode": "5002",
+      "areaCode": "500231",
+      "streetCode": "500231110"
+    }
+  }
+]
