@@ -78,12 +78,6 @@ Build the current application
 ```sh
 $ npm run build
 ```
-## Donate
-> 您的支持是我前进的动力，更好的支持开源事业！~
-
-<span><img src="./assets/images/wechat.png" width="300" height="300"></span>
-<span><img src="./assets/images/alipay.png" width="300" height="300"></span>
-
 
 ## Developed with Open Source Licensed [WebStorm](http://www.jetbrains.com/webstorm/)
 
