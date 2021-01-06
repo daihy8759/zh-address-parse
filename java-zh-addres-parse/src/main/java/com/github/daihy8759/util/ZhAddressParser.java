@@ -22,27 +22,11 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class ZhAddressParser {
 
-  private static final List<String> KEYWORDS = CollUtil.toList("详细地址",
-      "收货地址",
-      "收件地址",
-      "地址",
-      "所在地区",
-      "地区",
-      "姓名",
-      "收货人",
-      "收件人",
-      "联系人",
-      "收",
-      "邮编",
-      "联系电话",
-      "电话",
-      "联系人手机号码",
-      "手机号码",
-      "手机号");
+  private static final List<String> KEYWORDS = CollUtil.toList("详细地址", "收货地址", "收件地址", "地址", "所在地区", "地区", "姓名", "收货人",
+      "收件人", "联系人", "收", "邮编", "联系电话", "电话", "联系人手机号码", "手机号码", "手机号");
 
-  private static final List<String> NAME_CALL = CollUtil
-      .toList("先生", "小姐", "同志", "哥哥", "姐姐", "妹妹", "弟弟", "妈妈", "爸爸", "爷爷",
-          "奶奶", "姑姑", "舅舅");
+  private static final List<String> NAME_CALL = CollUtil.toList("先生", "小姐", "同志", "哥哥", "姐姐", "妹妹", "弟弟", "妈妈", "爸爸",
+      "爷爷", "奶奶", "姑姑", "舅舅");
 
   private static final Pattern PATTERN_PHONE = Pattern
       .compile("(\\d{7,12})|(\\d{3,4}-\\d{6,8})|(86-[1][0-9]{10})|(86[1][0-9]{10})|([1][0-9]{10})");
@@ -90,16 +74,13 @@ public class ZhAddressParser {
    * 清洗地址
    */
   private String cleanAddress(String address) {
-    String cleanedAddress = address
-        .replace("\r\n", " ")
-        .replace("\n", " ")
-        .replace("\t", " ");
+    String cleanedAddress = address.replace("\r\n", " ").replace("\n", " ").replace("\t", " ");
     for (String keyword : KEYWORDS) {
       cleanedAddress = cleanedAddress.replace(keyword, " ");
     }
 
-    cleanedAddress = cleanedAddress
-        .replaceAll("[`~!@#$^&*()=|\\{}':;',\\[\\].<>/?~！@#￥……&*（）——|\\{}【】‘；：”“’。，、？]", " ");
+    cleanedAddress = cleanedAddress.replaceAll("[`~!@#$^&*()=|\\{}':;',\\[\\].<>/?~！@#￥……&*（）——|\\{}【】‘；：”“’。，、？]",
+        " ");
     cleanedAddress = cleanedAddress.replaceAll(" {2,}", " ");
     return cleanedAddress;
   }
@@ -169,8 +150,7 @@ public class ZhAddressParser {
     }
     // 如果百家姓里面能找到这个姓，并且长度在1-5之间
     String nameFirst = fragment.substring(0, 1);
-    if (fragment.length() <= nameMaxLength && fragment.length() > 1
-        && zhCnNames.indexOf(nameFirst) != -1) {
+    if (fragment.length() <= nameMaxLength && fragment.length() > 1 && zhCnNames.indexOf(nameFirst) != -1) {
       return fragment;
     }
 
@@ -202,19 +182,15 @@ public class ZhAddressParser {
     return result;
   }
 
-  private String parseStreet(JSONArray street, JSONArray area, JSONArray city, JSONArray province,
-      String fragment) {
+  private String parseStreet(JSONArray street, JSONArray area, JSONArray city, JSONArray province, String fragment) {
     if (street.isEmpty()) {
       String matchStr = "";
       for (int i = 1; i < fragment.length(); i++) {
         String str = fragment.substring(0, i + 1);
         String pattern = "\\{\\\"code\\\":\\\"[0-9]{1,9}\\\",\\\"name\\\":\\\"{}[\\u4E00-\\u9FA5]*?\\\",\\\"areaCode\\\":\\\"{}\\\",\\\"cityCode\\\":\\\"{}\\\",\\\"provinceCode\\\":\\\"{}\\\"\\}";
-        String areaCode =
-            area.isEmpty() ? PATTERN_ADDRESS_CODE : area.getJSONObject(0).getString("code");
-        String cityCode =
-            city.isEmpty() ? PATTERN_ADDRESS_CODE : city.getJSONObject(0).getString("code");
-        String provinceCode =
-            province.isEmpty() ? PATTERN_ADDRESS_CODE : province.getJSONObject(0).getString("code");
+        String areaCode = area.isEmpty() ? PATTERN_ADDRESS_CODE : area.getJSONObject(0).getString("code");
+        String cityCode = city.isEmpty() ? PATTERN_ADDRESS_CODE : city.getJSONObject(0).getString("code");
+        String provinceCode = province.isEmpty() ? PATTERN_ADDRESS_CODE : province.getJSONObject(0).getString("code");
         pattern = StrUtil.format(pattern, str, areaCode, cityCode, provinceCode);
         Matcher matchStreet = Pattern.compile(pattern).matcher(streetString);
         JSONObject matchResult = matchOnlyOnce(matchStreet);
@@ -264,10 +240,8 @@ public class ZhAddressParser {
       for (int i = 1; i < fragment.length(); i++) {
         String str = fragment.substring(0, i + 1);
         String pattern = "\\{\\\"code\\\":\\\"[0-9]{1,6}\\\",\\\"name\\\":\\\"{}[\\u4E00-\\u9FA5]*?\\\",\\\"cityCode\\\":\\\"{}\\\",\\\"provinceCode\\\":\\\"{}\\\"\\}";
-        String cityCode =
-            city.isEmpty() ? PATTERN_ADDRESS_CODE : city.getJSONObject(0).getString("code");
-        String provinceCode =
-            province.isEmpty() ? PATTERN_ADDRESS_CODE : province.getJSONObject(0).getString("code");
+        String cityCode = city.isEmpty() ? PATTERN_ADDRESS_CODE : city.getJSONObject(0).getString("code");
+        String provinceCode = province.isEmpty() ? PATTERN_ADDRESS_CODE : province.getJSONObject(0).getString("code");
         pattern = StrUtil.format(pattern, str, cityCode, provinceCode);
         Matcher matchArea = Pattern.compile(pattern).matcher(areaString);
         JSONObject matchResult = matchOnlyOnce(matchArea);
@@ -309,8 +283,7 @@ public class ZhAddressParser {
       for (int i = 1; i < fragment.length(); i++) {
         String str = fragment.substring(0, i + 1);
         String pattern = "\\{\\\"code\\\":\\\"[0-9]{1,6}\\\",\\\"name\\\":\\\"{}[\\u4E00-\\u9FA5]*?\\\",\\\"provinceCode\\\":\\\"{}\\\"\\}";
-        String provinceCode =
-            province.isEmpty() ? PATTERN_ADDRESS_CODE : province.getJSONObject(0).getString("code");
+        String provinceCode = province.isEmpty() ? PATTERN_ADDRESS_CODE : province.getJSONObject(0).getString("code");
         pattern = StrUtil.format(pattern, str, provinceCode);
         Matcher matchCity = Pattern.compile(pattern).matcher(cityString);
         JSONObject matchResult = matchOnlyOnce(matchCity);
@@ -343,8 +316,8 @@ public class ZhAddressParser {
       String matchStr = "";
       for (int i = 1; i < fragment.length(); i++) {
         String str = fragment.substring(0, i + 1);
-        String pattern = StrUtil.format(
-            "\\{\\\"code\\\":\\\"[0-9]{1,6}\\\",\\\"name\\\":\\\"{}[\\u4E00-\\u9FA5]*?\\\"}", str);
+        String pattern = StrUtil
+            .format("\\{\\\"code\\\":\\\"[0-9]{1,6}\\\",\\\"name\\\":\\\"{}[\\u4E00-\\u9FA5]*?\\\"}", str);
         Matcher matchProvince = Pattern.compile(pattern).matcher(provinceString);
         JSONObject matchResult = matchOnlyOnce(matchProvince);
         int matchCount = matchResult.getInteger(KEY_COUNT);
@@ -403,8 +376,7 @@ public class ZhAddressParser {
    * @param postalCode 是否解析邮编
    * @return
    */
-  public JSONObject parse(String address, boolean parseName, boolean parsePhone,
-      boolean postalCode) {
+  public JSONObject parse(String address, boolean parseName, boolean parsePhone, boolean postalCode) {
     JSONObject parseResult = new JSONObject();
     parseResult.put(KEY_PROVINCE, new JSONArray());
     parseResult.put(KEY_CITY, new JSONArray());
@@ -426,16 +398,12 @@ public class ZhAddressParser {
       parseResult.put(KEY_POSTAL_CODE, postalCodeResult.getString(KEY_POSTAL_CODE));
       cleanedAddress = postalCodeResult.getString(KEY_ADDRESS);
     }
-    List<String> splitAddressList = Arrays.stream(cleanedAddress.split(" "))
-        .filter(StrUtil::isNotBlank)
-        .map(StrUtil::trim)
-        .collect(Collectors.toList());
+    List<String> splitAddressList = Arrays.stream(cleanedAddress.split(" ")).filter(StrUtil::isNotBlank)
+        .map(StrUtil::trim).collect(Collectors.toList());
     log.info("分割地址:{}", splitAddressList);
     for (String splitAddress : splitAddressList) {
-      if (parseResult.getJSONArray(KEY_PROVINCE).isEmpty() ||
-          parseResult.getJSONArray(KEY_CITY).isEmpty() ||
-          parseResult.getJSONArray(KEY_AREA).isEmpty() ||
-          parseResult.getJSONArray(KEY_STREET).isEmpty()) {
+      if (parseResult.getJSONArray(KEY_PROVINCE).isEmpty() || parseResult.getJSONArray(KEY_CITY).isEmpty()
+          || parseResult.getJSONArray(KEY_AREA).isEmpty() || parseResult.getJSONArray(KEY_STREET).isEmpty()) {
         JSONObject regionResult = parseRegionWithRegexp(splitAddress, parseResult);
         JSONArray detail = regionResult.getJSONArray(KEY_DETAIL);
         parseResult.put(KEY_PROVINCE, regionResult.getJSONArray(KEY_PROVINCE));
