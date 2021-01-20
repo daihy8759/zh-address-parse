@@ -1,0 +1,19 @@
+[
+  {
+    "address": "北京市东城区",
+    "result": {
+      "phone": "",
+      "province": "北京市",
+      "city": "北京市",
+      "area": "东城区",
+      "street": "",
+      "detail": "",
+      "name": "",
+      "postalCode": "",
+      "provinceCode": "11",
+      "cityCode": "1101",
+      "areaCode": "110101",
+      "streetCode": ""
+    }
+  }
+]
