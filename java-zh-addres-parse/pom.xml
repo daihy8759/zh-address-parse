@@ -4,7 +4,7 @@
 
   <groupId>com.github.daihy8759</groupId>
   <artifactId>zh-address-parse</artifactId>
-  <version>1.0.0</version>
+  <version>1.0.1</version>
   <name>zh-address-parse</name>
   <description>address parse</description>
   <url>https://github.com/daihy8759/zh-address-parse.git</url>

@@ -17,6 +17,21 @@ const streetString = JSON.stringify(streets);
 
 log(provinces.length + cities.length + areas.length)
 
+const sortAddress = (splitAddress) => {
+    const result = [];
+    const getIndex = (str) => {
+        return splitAddress.findIndex(item => item.indexOf(str) !== -1)
+    }
+    ['省', '市', '区', '县', '镇'].forEach(item => {
+        let index = getIndex(item)
+        if (index !== -1) {
+            result.push(splitAddress.splice(index, 1)[0])
+        }
+    })
+
+    return [...result, ...splitAddress];
+}
+
 /**
  * 需要解析的地址，type是解析的方式，默认是正则匹配
  * @param address
@@ -55,7 +70,8 @@ const AddressParse = (address, options) => {
     log('获取邮编的结果 --->', address)
 
     // 地址分割
-    const splitAddress = address.split(' ').filter(item => item).map(item => item.trim())
+    let splitAddress = address.split(' ').filter(item => item).map(item => item.trim())
+    splitAddress = sortAddress(splitAddress)
     log('分割地址 --->', splitAddress)
 
     const d1 = new Date().getTime()
